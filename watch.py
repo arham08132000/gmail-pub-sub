@@ -6,14 +6,15 @@ import os.path
 import datetime
 
 # Define scopes
-SCOPES = ['https://www.googleapis.com/auth/gmail.readonly']
+SCOPES = ['https://www.googleapis.com/auth/gmail.readonly', 'https://www.googleapis.com/auth/gmail.modify',
+    'https://www.googleapis.com/auth/gmail.labels']
 
 def authenticate():
     creds = None
     # Check if token.json exists with valid credentials
     if os.path.exists('token.json'):
         try:
-            creds = Credentials.from_authorized_user_file('token.json', SCOPES, redirect_uri='http://localhost:8000/')
+            creds = Credentials.from_authorized_user_file('token.json', SCOPES)
             if creds and creds.valid:
                 print("Using existing valid credentials from token.json")
                 return creds

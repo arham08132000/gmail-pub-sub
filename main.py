@@ -11,6 +11,8 @@ app = FastAPI(title="Gmail Pub/Sub Webhook")
 
 @app.post("/gmail-webhook")
 async def gmail_webhook(request: Request):
+    print("POST request received at /gmail-webhook")
+    print(f"Headers: {dict(request.headers)}")
     logger.info("POST request received at /gmail-webhook")
     logger.info(f"Headers: {dict(request.headers)}")
     
@@ -57,7 +59,12 @@ async def gmail_webhook(request: Request):
         logger.error(f"Unexpected error: {e}", exc_info=True)
         raise HTTPException(500, f"Internal server error: {str(e)}")
 
+@app.post("/health")
+async def health_check():
+    print("POST request received at /health")
+    return {"status": "healthy", "time": datetime.utcnow().isoformat()}
+
 @app.get("/")
 async def health_check():
-    logger.info("GET request received at /")
+    print("GET request received at /")
     return {"status": "healthy", "time": datetime.utcnow().isoformat()}
