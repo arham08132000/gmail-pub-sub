@@ -4,10 +4,12 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 import os.path
 import datetime
+from dotenv import load_dotenv
+
+load_dotenv()  # Load environment variables from .env file
 
 # Define scopes
-SCOPES = ['https://www.googleapis.com/auth/gmail.readonly', 'https://www.googleapis.com/auth/gmail.modify',
-    'https://www.googleapis.com/auth/gmail.labels']
+SCOPES = ['https://mail.google.com/']
 
 def authenticate():
     creds = None

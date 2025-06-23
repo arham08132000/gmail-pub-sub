@@ -4,3 +4,5 @@ __pycache__
 app.log
 credentials.json
 token.json
+*.json
+app.log
