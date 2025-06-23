@@ -8,3 +8,4 @@ token.json
 app.log
 attachments/
 email_data/
+*.txt
