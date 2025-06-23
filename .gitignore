@@ -6,3 +6,5 @@ credentials.json
 token.json
 *.json
 app.log
+attachments/
+email_data/
