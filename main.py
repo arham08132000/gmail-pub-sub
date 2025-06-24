@@ -9,12 +9,14 @@ import uuid
 from typing import List, Dict, Any, Optional
 import email.utils
 from dotenv import load_dotenv
+from fastapi.templating import Jinja2Templates
 
 load_dotenv()
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+templates = Jinja2Templates(directory="templates")
 
 app = FastAPI(title="Gmail Pub/Sub Webhook")
 
@@ -465,4 +467,5 @@ async def manual_check_gmail():
 
 @app.get("/")
 async def root():
-    return {"status": "healthy", "time": datetime.utcnow().isoformat()}
+    """Render the main page"""
+    return templates.TemplateResponse("index.html", {"request": {}})
