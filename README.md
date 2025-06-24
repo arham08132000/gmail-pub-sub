@@ -18,6 +18,8 @@ A FastAPI-based application that receives Gmail notifications via Google Cloud P
 Gmail → Google Cloud Pub/Sub → Your Webhook Endpoint → FastAPI Application
 ```
 
+Complete Architecture :- https://gmail-pub-sub.vercel.app/
+
 ## Prerequisites
 
 - Python 3.7+
